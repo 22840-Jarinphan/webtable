@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบบันทึกข้อมูลรูปแบบตาราง</title>
+    <title>✨ ระบบบันทึกข้อมูลสุดสดใส ✨</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,142 +11,179 @@
         }
 
         body {
-            background-color: #f5f7fb;
+            /* ใช้ Gradient ไล่สีจากน้ำเงินไปฟ้าเข้ม */
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             margin: 0;
-            padding: 20px;
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 900px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border: 4px solid #fef08a; /* ขอบสีเหลืองพาสเทล */
         }
 
         h2 {
-            color: #333;
+            color: #1e3a8a; /* สีน้ำเงินเข้ม */
             margin-top: 0;
             text-align: center;
+            font-size: 28px;
+            text-shadow: 1px 1px 0px #fef08a;
         }
 
         /* ฟอร์มกรอกข้อมูล */
         .form-group {
-            display: flex;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
             margin-bottom: 25px;
-            flex-wrap: wrap;
+            background: #f0fdf4; /* พื้นหลังฟอร์มสีเขียว-ฟ้าอ่อนๆ ให้ดูสบายตา */
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px dashed #38bdf8;
         }
 
         .form-group input {
-            flex: 1;
-            min-width: 150px;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
             font-size: 14px;
             outline: none;
-            transition: border 0.2s;
+            transition: all 0.2s;
         }
 
+        /* เมื่อคลิกช่องกรอก เปลี่ยนเป็นขอบสีฟ้าและเรืองแสง */
         .form-group input:focus {
-            border-color: #4a90e2;
+            border-color: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+            background-color: #fff;
         }
 
+        /* ปุ่มเพิ่มข้อมูล สีเหลืองสดใส */
         .btn-add {
-            background-color: #2ecc71;
-            color: white;
+            background-color: #eab308;
+            color: #1e3a8a;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 12px 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            transition: background 0.2s;
+            font-size: 15px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0px #ca8a04;
         }
 
         .btn-add:hover {
-            background-color: #27ae60;
+            background-color: #facc15;
+            transform: translateY(-2px);
+        }
+
+        .btn-add:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0px #ca8a04;
         }
 
         /* ส่วนของตาราง */
         .table-responsive {
             overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            margin-top: 10px;
         }
 
         th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #edf2f7;
+            padding: 14px 18px;
+            border-bottom: 2px solid #e2e8f0;
         }
 
+        /* หัวตารางสีน้ำเงิน ตัวอักษรสีเหลือง */
         th {
-            background-color: #4a90e2;
-            color: white;
-            font-weight: 600;
+            background-color: #1e3a8a;
+            color: #facc15;
+            font-weight: bold;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        /* แถวสลับสี (ฟ้าอ่อน กับ ขาว) */
+        tr:nth-child(even) {
+            background-color: #f0f9ff;
         }
 
         tr:hover {
-            background-color: #f8fafc;
+            background-color: #e0f2fe; /* ไฮไลท์สีฟ้าเมื่อเอาเมาส์ชี้ */
         }
 
+        /* ปุ่มลบสีแดงส้ม */
         .btn-delete {
-            background-color: #e74c3c;
+            background-color: #f43f5e;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 8px 14px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: bold;
             transition: background 0.2s;
         }
 
         .btn-delete:hover {
-            background-color: #c0392b;
+            background-color: #be123c;
         }
 
         .no-data {
             text-align: center;
-            color: #888;
+            color: #64748b;
             font-style: italic;
+            font-size: 16px;
+            padding: 30px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>📊 ระบบบันทึกข้อมูล</h2>
+    <h2>📊 ยินดีต้อนรับสู่ระบบบันทึกข้อมูลสุดสดใส ✨💛🔵</h2>
     
     <div class="form-group">
-        <input type="text" id="inputName" placeholder="ชื่อ-นามสกุล" required>
-        <input type="text" id="inputRole" placeholder="ตำแหน่ง / บทบาท">
-        <input type="email" id="inputEmail" placeholder="อีเมล">
-        <button class="btn-add" onclick="addData()">เพิ่มข้อมูล</button>
+        <input type="text" id="inputName" placeholder="👤 ชื่อ-นามสกุล (จำเป็น)" required>
+        <input type="text" id="inputRole" placeholder="💼 ตำแหน่ง / บทบาท">
+        <input type="email" id="inputEmail" placeholder="✉️ อีเมล">
+        <input type="tel" id="inputPhone" placeholder="📞 เบอร์โทรศัพท์">
+        <input type="text" id="inputNote" placeholder="📝 หมายเหตุเพิ่มเติม">
+        <button class="btn-add" onclick="addData()">➕ เพิ่มข้อมูล</button>
     </div>
 
     <div class="table-responsive">
         <table>
             <thead>
                 <tr>
-                    <th>ลำดับ</th>
-                    <th>ชื่อ-นามสกุล</th>
-                    <th>ตำแหน่ง</th>
-                    <th>อีเมล</th>
-                    <th style="width: 80px; text-align: center;">จัดการ</th>
+                    <th>🔢 ลำดับ</th>
+                    <th>👤 ชื่อ-นามสกุล</th>
+                    <th>💼 ตำแหน่ง</th>
+                    <th>✉️ อีเมล</th>
+                    <th>📞 เบอร์โทรศัพท์</th>
+                    <th>📝 หมายเหตุ</th>
+                    <th style="width: 90px; text-align: center;">⚙️ จัดการ</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
                 <tr id="noDataRow">
-                    <td colspan="5" class="no-data">ยังไม่มีข้อมูลในระบบ</td>
+                    <td colspan="7" class="no-data">🎈 ยังไม่มีข้อมูลในระบบ ลองเพิ่มข้อมูลด้านบนได้เลย!</td>
                 </tr>
             </tbody>
         </table>
@@ -161,35 +198,41 @@
         const nameInput = document.getElementById('inputName');
         const roleInput = document.getElementById('inputRole');
         const emailInput = document.getElementById('inputEmail');
+        const phoneInput = document.getElementById('inputPhone');
+        const noteInput = document.getElementById('inputNote');
 
-        // ตรวจสอบว่ากรอกชื่อหรือยัง (บังคับกรอก)
+        // บังคับกรอกชื่อเหมือนเดิม
         if (nameInput.value.trim() === "") {
-            alert("กรุณากรอกชื่อ-นามสกุลด้วยครับ");
+            alert("❌ กรุณากรอกชื่อ-นามสกุลด้วยนะคะ!");
             nameInput.focus();
             return;
         }
 
-        // สร้าง Object ข้อมูลใหม่
+        // สร้าง Object ข้อมูลใหม่ (รวมฟิลด์ที่เพิ่มเข้ามา)
         const newData = {
             id: runningId++,
             name: nameInput.value,
             role: roleInput.value || "-",
-            email: emailInput.value || "-"
+            email: emailInput.value || "-",
+            phone: phoneInput.value || "-",
+            note: noteInput.value || "-"
         };
 
-        // เพิ่มเข้า Array และอัปเดตตาราง
+        // อัปเดตข้อมูลเข้าตาราง
         dataList.push(newData);
         renderTable();
 
-        // เคลียร์ค่าในช่องกรอก
+        // เคลียร์ค่าทั้งหมดหลังกดเพิ่ม
         nameInput.value = "";
         roleInput.value = "";
         emailInput.value = "";
+        phoneInput.value = "";
+        noteInput.value = "";
         nameInput.focus();
     }
 
     function deleteData(id) {
-        if(confirm("คุณต้องการลบข้อมูลแถวนี้ใช่หรือไม่?")) {
+        if(confirm("🗑️ คุณแน่ใจใช่ไหมว่าจะลบข้อมูลแถวนี้?")) {
             dataList = dataList.filter(item => item.id !== id);
             renderTable();
         }
@@ -197,27 +240,28 @@
 
     function renderTable() {
         const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = ""; // เคลียร์ตารางก่อนวาดใหม่
+        tableBody.innerHTML = ""; 
 
         if (dataList.length === 0) {
             tableBody.innerHTML = `
                 <tr id="noDataRow">
-                    <td colspan="5" class="no-data">ยังไม่มีข้อมูลในระบบ</td>
+                    <td colspan="7" class="no-data">🎈 ยังไม่มีข้อมูลในระบบ ลองเพิ่มข้อมูลด้านบนได้เลย!</td>
                 </tr>
             `;
             return;
         }
 
-        // วนลูปนำข้อมูลใน Array มาสร้างเป็นแถวในตาราง
         dataList.forEach((item, index) => {
             const row = `
                 <tr>
-                    <td>${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.role}</td>
+                    <td style="font-weight: bold; color: #1e3a8a;">${index + 1}</td>
+                    <td style="font-weight: 500;">${item.name}</td>
+                    <td><span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-size: 13px;">${item.role}</span></td>
                     <td>${item.email}</td>
+                    <td>${item.phone}</td>
+                    <td style="color: #64748b;">${item.note}</td>
                     <td style="text-align: center;">
-                        <button class="btn-delete" onclick="deleteData(${item.id})">ลบ</button>
+                        <button class="btn-delete" onclick="deleteData(${item.id})">❌ ลบ</button>
                     </td>
                 </tr>
             `;
