@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางข้อมูลสัตว์ - Animal Data Table</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2=family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-amber-500 text-white text-center py-12 px-4 shadow-md bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518914781460-a3adb465edec?auto=format&fit=crop&w=1200&q=80');">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2 tracking-wide">ตารางข้อมูลสรุปสัตว์ที่ฉันชอบ</h1>
+        <p class="text-sm md:text-base text-gray-200 max-w-2xl mx-auto">ตารางแสดงรายละเอียด ข้อมูลประเภท อาหาร และอายุขัยเฉลี่ยของสัตว์แต่ละชนิด</p>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-700 border-b-2 border-amber-500 pb-2 inline-block">ฐานข้อมูลสัตว์เลี้ยงและสัตว์ป่า</h2>
+            </div>
+            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-200 shadow-sm cursor-pointer">
+                + เพิ่มข้อมูลสัตว์
+            </button>
+        </div>
+
+        <div class="w-full overflow-x-auto bg-white rounded-xl shadow-md border border-gray-100">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-amber-500 text-white text-sm uppercase tracking-wider">
+                        <th class="py-4 px-6 font-semibold">ชื่อสัตว์ (ไทย/อังกฤษ)</th>
+                        <th class="py-4 px-6 font-semibold">ประเภท</th>
+                        <th class="py-4 px-6 font-semibold">อาหารหลัก</th>
+                        <th class="py-4 px-6 font-semibold">อายุขัยเฉลี่ย</th>
+                        <th class="py-4 px-6 font-semibold">ระดับความเชื่อง</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-sm">
+                    <tr class="hover:bg-amber-50/40 transition duration-150">
+                        <td class="py-4 px-6 font-semibold text-gray-900">จิ้งจอก (Fox)</td>
+                        <td class="py-4 px-6">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-orange-100 text-orange-700">สัตว์ป่า</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">เนื้อสัตว์, แมลง, ผลไม้</td>
+                        <td class="py-4 px-6 text-gray-600">3 - 5 ปี (ในธรรมชาติ)</td>
+                        <td class="py-4 px-6">
+                            <span class="text-red-500 font-medium">สัตว์ป่า/ฝึกยาก</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-amber-50/40 transition duration-150">
+                        <td class="py-4 px-6 font-semibold text-gray-900">เม่นแคระ (Hedgehog)</td>
+                        <td class="py-4 px-6">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-700">สัตว์ตัวจิ๋ว</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">แมลง, หนอน, อาหารสำเร็จรูป</td>
+                        <td class="py-4 px-6 text-gray-600">4 - 6 ปี</td>
+                        <td class="py-4 px-6">
+                            <span class="text-yellow-600 font-medium">ปานกลาง (ขี้อาย)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-amber-50/40 transition duration-150">
+                        <td class="py-4 px-6 font-semibold text-gray-900">แมว (Cat)</td>
+                        <td class="py-4 px-6">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-700">เจ้านายตัวน้อย</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">ปลา, เนื้อสัตว์, อาหารเม็ด</td>
+                        <td class="py-4 px-6 text-gray-600">12 - 15 ปี</td>
+                        <td class="py-4 px-6">
+                            <span class="text-green-600 font-medium">เชื่อง (รักอิสระ)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-amber-50/40 transition duration-150">
+                        <td class="py-4 px-6 font-semibold text-gray-900">หมา (Dog)</td>
+                        <td class="py-4 px-6">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-700">เพื่อนที่ดีที่สุด</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">เนื้อสัตว์, อาหารเม็ดสำเร็จรูป</td>
+                        <td class="py-4 px-6 text-gray-600">10 - 13 ปี</td>
+                        <td class="py-4 px-6">
+                            <span class="text-green-600 font-medium">เชื่องมาก (ซื่อสัตย์)</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-amber-50/40 transition duration-150">
+                        <td class="py-4 px-6 font-semibold text-gray-900">กระต่าย (Rabbit)</td>
+                        <td class="py-4 px-6">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-pink-100 text-pink-700">นักกระโดดจอมซน</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">หญ้าแห้ง, ผักใบเขียว, อาหารเม็ด</td>
+                        <td class="py-4 px-6 text-gray-600">8 - 12 ปี</td>
+                        <td class="py-4 px-6">
+                            <span class="text-green-600 font-medium">เชื่อง (ตื่นตกใจง่าย)</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-12 border-t border-gray-800">
+        <p class="text-sm">© 2024 My Favorite Animals Database. สร้างด้วยความรักในเหล่าสัตว์ตัวน้อย</p>
+    </footer>
+
+</body>
+</html>
