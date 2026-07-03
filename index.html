@@ -3,88 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 Ultimate Neon Data Dashboard 🌟</title>
+    <title>🌟 ระบบบันทึกข้อมูลสุดล้ำและสดใส 🌟</title>
     <style>
         * {
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* --- 🎨 1. ANIMATED BACKGROUND (พื้นหลังเคลื่อนไหว) --- */
+        /* เอฟเฟกต์ภาพพื้นหลังไล่เฉดสีและเคลื่อนไหวเยื้องกราย */
         body {
+            background: linear-gradient(-45deg, #0284c7, #bae6fd, #facc15, #0c4a6e);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
             margin: 0;
-            padding: 30px 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0369a1, #1e40af);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        @keyframes gradientBG {
+        @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* ฟองสบู่ลอยดุ๊กดิ๊กด้านหลัง */
-        .circles {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            overflow: hidden; z-index: 0; pointer-events: none;
-        }
-        .circles li {
-            position: absolute; display: block; list-style: none;
-            width: 20px; height: 20px; background: rgba(250, 204, 21, 0.15);
-            animation: animateBubble 25s linear infinite; bottom: -150px;
-            border-radius: 50%;
-        }
-        .circles li:nth-child(1){ left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .circles li:nth-child(2){ left: 10%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 12s; background: rgba(56, 189, 248, 0.2); }
-        .circles li:nth-child(3){ left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .circles li:nth-child(4){ left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; background: rgba(56, 189, 248, 0.2); }
-        .circles li:nth-child(5){ left: 85%; width: 50px; height: 50px; animation-delay: 5s; }
-
-        @keyframes animateBubble {
-            0%{ transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 50%; }
-            100%{ transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-        }
-
-        /* --- 🛍️ 2. MAIN CONTAINER --- */
+        /* กล่องข้อความสไตล์กระจกฝ้า (Glassmorphism) เล็กน้อยให้ดูหรูหรา */
         .container {
             width: 100%;
             max-width: 1250px;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
             padding: 35px;
             border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 4px solid #facc15; /* ขอบสีเหลืองทองตัดน้ำเงิน */
-            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 30, 80, 0.25);
+            border: 4px solid #ffffff;
         }
 
         h2 {
-            color: #1e3a8a;
+            color: #0c4a6e;
             margin-top: 0;
             text-align: center;
             font-size: 2.2rem;
-            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* --- 📝 3. FORM GROUP (Grid 4 คอลัมน์ รองรับข้อมูลเพียบ) --- */
+        /* ฟอร์มกรอกข้อมูลแบบจัดเรียงตารางยืดหยุ่น */
         .form-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
-            background: #f0fdf4; /* พื้นหลังฟอร์มเขียว/ฟ้าอ่อนสบายตา */
+            background: #f0f9ff;
             padding: 25px;
             border-radius: 18px;
-            border: 3px dashed #38bdf8;
+            border: 2px dashed #7dd3fc;
         }
 
         .input-box {
@@ -93,15 +66,19 @@
             gap: 6px;
         }
 
+        .input-box.full-width {
+            grid-column: 1 / -1; /* ให้ช่องหมายเหตุยาวเต็มแถว */
+        }
+
         .input-box label {
             font-weight: bold;
-            color: #1e40af;
+            color: #0369a1;
             font-size: 14px;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 12px 14px;
+            padding: 12px 15px;
             border: 2px solid #cbd5e1;
             border-radius: 10px;
             font-size: 14px;
@@ -111,8 +88,8 @@
         }
 
         .form-group input:focus, .form-group select:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+            border-color: #0284c7;
+            box-shadow: 0 0 8px rgba(2, 132, 199, 0.3);
         }
 
         .btn-container {
@@ -123,28 +100,29 @@
         }
 
         .btn-add {
-            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+            background-color: #facc15;
             color: #0f172a;
-            border: none;
+            border: 2px solid #eab308;
             padding: 14px 50px;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: bold;
             font-size: 18px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(234, 179, 8, 0.4);
+            transition: all 0.2s;
+            box-shadow: 0 5px 10px rgba(250, 204, 21, 0.4);
         }
 
         .btn-add:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(234, 179, 8, 0.6);
+            background-color: #eab308;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 15px rgba(234, 179, 8, 0.5);
         }
 
-        /* --- 📊 4. TABLE STYLING --- */
+        /* ส่วนตารางข้อมูล */
         .table-responsive {
             overflow-x: auto;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         table {
@@ -160,8 +138,8 @@
         }
 
         th {
-            background-color: #1e3a8a; /* สีน้ำเงินเข้ม */
-            color: #facc15; /* ตัวอักษรสีเหลือง */
+            background-color: #0284c7;
+            color: #ffffff;
             font-weight: bold;
             white-space: nowrap;
         }
@@ -176,6 +154,7 @@
             padding: 8px 14px;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 13px;
             font-weight: bold;
             transition: background 0.2s;
         }
@@ -191,11 +170,11 @@
         }
 
         .badge {
-            padding: 4px 10px;
-            border-radius: 20px;
+            padding: 4px 8px;
+            border-radius: 6px;
             font-weight: bold;
             font-size: 12px;
-            display: inline-block;
+            white-space: nowrap;
         }
         .bg-active { background-color: #dcfce7; color: #166534; }
         .bg-pending { background-color: #fef9c3; color: #854d0e; }
@@ -204,57 +183,49 @@
 </head>
 <body>
 
-<ul class="circles">
-    <li></li><li></li><li></li><li></li><li></li>
-</ul>
-
 <div class="container">
-    <h2>✨🚀 Ultimate Neon Dashboard 🔵💛⚡</h2>
+    <h2>🚀 Super Data Dashboard 🌌✨🟡🔵</h2>
     
     <div class="form-group">
         <div class="input-box">
             <label>👤 ชื่อ-นามสกุล <span style="color:red;">*</span></label>
-            <input type="text" id="inputName" placeholder="เช่น นายสมชาย ใจดี">
+            <input type="text" id="inputName" placeholder="เช่น นายสมชาย สายลุย">
         </div>
         <div class="input-box">
             <label>💼 ตำแหน่ง / บทบาท</label>
-            <input type="text" id="inputRole" placeholder="เช่น Manager, Account">
+            <input type="text" id="inputRole" placeholder="เช่น Developer, นักเรียน">
         </div>
         <div class="input-box">
             <label>📅 วัน/เดือน/ปี เกิด</label>
             <input type="date" id="inputBirth">
         </div>
         <div class="input-box">
-            <label>🎂 อายุ (ปี)</label>
-            <input type="number" id="inputAge" placeholder="เช่น 28" min="1">
-        </div>
-        <div class="input-box">
             <label>✉️ อีเมล</label>
-            <input type="email" id="inputEmail" placeholder="name@company.com">
+            <input type="email" id="inputEmail" placeholder="example@email.com">
         </div>
         <div class="input-box">
             <label>📞 เบอร์โทรศัพท์</label>
-            <input type="tel" id="inputPhone" placeholder="092-XXX-XXXX">
+            <input type="tel" id="inputPhone" placeholder="เช่น 098-765-XXXX">
         </div>
         <div class="input-box">
             <label>💰 เงินเดือน / รายได้ (บาท)</label>
-            <input type="number" id="inputSalary" placeholder="เช่น 30000" min="0">
+            <input type="number" id="inputSalary" placeholder="เช่น 25000" min="0">
         </div>
         <div class="input-box">
             <label>🚦 สถานะการทำงาน</label>
             <select id="inputStatus">
                 <option value="🟢 ทำงานอยู่">🟢 ทำงานอยู่ (Active)</option>
-                <option value="🟡 พักงาน">🟡 พักงาน (Pending)</option>
+                <option value="🟡 ทดลองงาน">🟡 ทดลองงาน (Pending)</option>
                 <option value="🔴 ลาออกแล้ว">🔴 ลาออกแล้ว (Inactive)</option>
             </select>
         </div>
-        <div class="input-box" style="grid-column: span auto;">
+        <div class="input-box full-width">
             <label>📝 หมายเหตุเพิ่มเติม</label>
-            <input type="text" id="inputNote" placeholder="ระบุข้อความสั้นๆ (ถ้ามี)">
+            <input type="text" id="inputNotes" placeholder="ข้อมูลเพิ่มเติมอื่นๆ (ถ้ามี)">
         </div>
         
         <div class="btn-container">
-            <button class="btn-add" onclick="addData()">🚀 บันทึกข้อมูลสุดปัง 🚀</button>
+            <button class="btn-add" onclick="addData()">✨ บันทึกข้อมูลแบบอลังการ ✨</button>
         </div>
     </div>
 
@@ -266,9 +237,8 @@
                     <th>👤 ชื่อ-นามสกุล</th>
                     <th>💼 ตำแหน่ง</th>
                     <th>📅 วันเกิด</th>
-                    <th>🎂 อายุ</th>
                     <th>✉️ อีเมล</th>
-                    <th>📞 เบอร์โทร</th>
+                    <th>📞 เบอร์โทรศัพท์</th>
                     <th>💰 เงินเดือน</th>
                     <th>🚦 สถานะ</th>
                     <th>📝 หมายเหตุ</th>
@@ -277,7 +247,7 @@
             </thead>
             <tbody id="tableBody">
                 <tr id="noDataRow">
-                    <td colspan="11" class="no-data">🛸 อวกาศยังว่างเปล่า.. มาร่วมเติมเต็มข้อมูลกันเถอะ! ✨</td>
+                    <td colspan="10" class="no-data">🔍 พื้นหลังขยับแล้ว แต่ตารางยังว่างอยู่.. ลองกรอกข้อมูลสิครับ! 👀</td>
                 </tr>
             </tbody>
         </table>
@@ -288,61 +258,64 @@
     let dataList = [];
     let runningId = 1;
 
-    // ฟังก์ชันช่วยแปลงรูปแบบวันที่ให้เปิดอ่านง่ายแบบไทย (วว/ดด/ปปปป)
-    function formatDate(dateString) {
-        if (!dateString) return "-";
-        const date = new Date(dateString);
-        return date.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    }
-
     function addData() {
         const nameInput = document.getElementById('inputName');
         const roleInput = document.getElementById('inputRole');
         const birthInput = document.getElementById('inputBirth');
-        const ageInput = document.getElementById('inputAge');
         const emailInput = document.getElementById('inputEmail');
         const phoneInput = document.getElementById('inputPhone');
         const salaryInput = document.getElementById('inputSalary');
         const statusInput = document.getElementById('inputStatus');
-        const noteInput = document.getElementById('inputNote');
+        const notesInput = document.getElementById('inputNotes');
 
         if (nameInput.value.trim() === "") {
-            alert("❌ ต้องกรอกชื่อ-นามสกุลก่อนนะครับคนดี! 😉");
+            alert("❌ กรุณากรอกชื่อ-นามสกุลด้วยนะครับคนดี! 🥰");
             nameInput.focus();
             return;
         }
 
-        // จัดรูปแบบเงินเดือนให้มี Comma สวยๆ (เช่น 30,000)
+        // ฟอร์แมตวันที่ให้อ่านง่ายขึ้น (ถ้ามีการเลือก)
+        let formattedDate = "-";
+        if(birthInput.value) {
+            const dateObj = new Date(birthInput.value);
+            formattedDate = dateObj.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        // ฟอร์แมตเงินเดือนให้มีคอมม่า ( , )
         let formattedSalary = "-";
-        if (salaryInput.value) {
-            formattedSalary = Number(salaryInput.value).toLocaleString() + " ฿";
+        if(salaryInput.value) {
+            formattedSalary = parseFloat(salaryInput.value).toLocaleString('th-TH') + " ฿";
         }
 
         const newData = {
             id: runningId++,
             name: nameInput.value,
             role: roleInput.value || "ทั่วไป 👤",
-            birth: formatDate(birthInput.value),
-            age: ageInput.value ? ageInput.value + " ปี" : "-",
+            birth: formattedDate,
             email: emailInput.value || "-",
             phone: phoneInput.value || "-",
             salary: formattedSalary,
             status: statusInput.value,
-            note: noteInput.value || "-"
+            notes: notesInput.value || "-"
         };
 
         dataList.push(newData);
         renderTable();
 
-        // เคลียร์ค่าทั้งหมดหลังกดบันทึก
-        nameInput.value = ""; roleInput.value = ""; birthInput.value = "";
-        ageInput.value = ""; emailInput.value = ""; phoneInput.value = "";
-        salaryInput.value = ""; noteInput.value = ""; statusInput.selectedIndex = 0;
+        // รีเซ็ตฟิลด์ทั้งหมด
+        nameInput.value = "";
+        roleInput.value = "";
+        birthInput.value = "";
+        emailInput.value = "";
+        phoneInput.value = "";
+        salaryInput.value = "";
+        notesInput.value = "";
+        statusInput.selectedIndex = 0;
         nameInput.focus();
     }
 
     function deleteData(id) {
-        if(confirm("🗑️ ลบจริงเหรอจ๊ะ? ข้อมูลจะปลิวหายไปในอวกาศเลยนะ!")) {
+        if(confirm("🗑️ ลบจริงหรอ? ข้อมูลหายวับไปกับตาเลยน้า~")) {
             dataList = dataList.filter(item => item.id !== id);
             renderTable();
         }
@@ -355,7 +328,7 @@
         if (dataList.length === 0) {
             tableBody.innerHTML = `
                 <tr id="noDataRow">
-                    <td colspan="11" class="no-data">🛸 อวกาศยังว่างเปล่า.. มาร่วมเติมเต็มข้อมูลกันเถอะ! ✨</td>
+                    <td colspan="10" class="no-data">🔍 พื้นหลังขยับแล้ว แต่ตารางยังว่างอยู่.. ลองกรอกข้อมูลสิครับ! 👀</td>
                 </tr>
             `;
             return;
@@ -369,15 +342,14 @@
             const row = `
                 <tr>
                     <td><b>${index + 1}</b></td>
-                    <td style="color: #1e40af; font-weight: bold;">${item.name}</td>
+                    <td style="color: #0369a1; font-weight: 500; white-space: nowrap;">${item.name}</td>
                     <td>${item.role}</td>
-                    <td>${item.birth}</td>
-                    <td>${item.age}</td>
+                    <td style="white-space: nowrap;">${item.birth}</td>
                     <td>${item.email}</td>
-                    <td>${item.phone}</td>
-                    <td style="color: #16a34a; font-weight: bold;">${item.salary}</td>
+                    <td style="white-space: nowrap;">${item.phone}</td>
+                    <td style="color: #b45309; font-weight: bold;">${item.salary}</td>
                     <td><span class="badge ${badgeClass}">${item.status}</span></td>
-                    <td style="color: #64748b; font-style: italic;">${item.note}</td>
+                    <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${item.notes}">${item.notes}</td>
                     <td style="text-align: center;">
                         <button class="btn-delete" onclick="deleteData(${item.id})">❌ ลบ</button>
                     </td>
